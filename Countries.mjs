@@ -30,7 +30,10 @@ const divideToChunks = (chunksNumber, arrayToDivide) => {
         newChunked.push(chunk);
     }
 
-    // console.log(... newChunked)
+    newChunked.forEach(list => {
+        console.log(list);
+        console.log()
+    })
     return newChunked;
 }
 
@@ -55,7 +58,7 @@ const searchByExactName = (arrayToSearch, value) => {
 const checkCountry = (toCheckCountry) => {
 	const isStateAvailable = countries.some(country => country.toLocaleLowerCase() === toCheckCountry.toLocaleLowerCase());
 	
-	isStateAvailable ? console.log(`${toCheckCountry} is FOUND`) : console.log(`${toCheckCountry} is NOT FOUND`)
+	isStateAvailable ? console.log(`${toCheckCountry} is FOUND`) : console.log(`${toCheckCountry} is NOT FOUND`);
 }
 
 const concatChunks = (...chunkArrays) => {
@@ -66,7 +69,7 @@ const concatChunks = (...chunkArrays) => {
 
 const deleteCountry = (value, arrayToUse) => {
     const indexToDelete = arrayToUse.findIndex(item => item.toLowerCase() === value.toLowerCase());
-    arrayToUse.splice(indexToDelete, 1)
+    arrayToUse.splice(indexToDelete, 1);
     console.log(`${value} deleted successfully`)
 }
 
@@ -81,7 +84,7 @@ countries.shift();
 countries.splice("My Home", 1);
 
 const checkProvidedCountry = checkCountry("palestine");
-const dividedCountries = divideToChunks(50, countries);
+const dividedCountries = divideToChunks(100, countries);
 const concatCountries = concatChunks([2, 5], [3], [1]);
 const indexOfState = countries.indexOf("Palestine");
 const isStateAvailable = countries.includes("Palestine");
