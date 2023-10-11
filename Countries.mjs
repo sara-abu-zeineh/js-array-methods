@@ -6,8 +6,9 @@ const sortedArraysAscending = [...countries].sort(function (firstCountry, second
     }
     if (secondCountry > firstCountry) {
         return 1;
+    } else {
+        return 0;
     }
-    return 0;
 });
 
 const sortedArrayDescending = [...countries].sort(function (firstCountry, secondCountry) {
@@ -16,8 +17,9 @@ const sortedArrayDescending = [...countries].sort(function (firstCountry, second
     }
     if (secondCountry > firstCountry) {
         return -1;
+    } else { 
+        return 0;
     }
-    return 0;
 });
 
 const divideToChunks = (chunksNumber, arrayToDivide) => {
@@ -62,6 +64,16 @@ const concatChunks = (...chunkArrays) => {
     return concatenatedChunks;
 }
 
+const deleteCountry = (value, arrayToUse) => {
+    const indexToDelete = arrayToUse.findIndex(item => item.toLowerCase() === value.toLowerCase());
+    arrayToUse.splice(indexToDelete, 1)
+    console.log(`${value} deleted successfully`)
+}
+
+const getLength = (arrayToUse) =>{
+    return arrayToUse.length;
+}
+
 countries.push("My Home");
 countries.pop();
 countries.unshift("My Home");
@@ -75,4 +87,5 @@ const indexOfState = countries.indexOf("Palestine");
 const isStateAvailable = countries.includes("Palestine");
 const containsValue = searchByPartialName(countries, "pal");
 const searchByFullName = searchByExactName(countries, "palestine");
-// console.log(searchByFullName)
+const deleteByValue = deleteCountry("Israel", countries);
+
