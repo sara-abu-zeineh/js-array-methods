@@ -130,6 +130,20 @@ class Countries {
             return `Please Enter the city Name Correctly`
         }
     }
+
+    updateCityInCountry(country, cityName, newCityName) {
+        const countryIndex = this.indexOfCountry(country);
+        if (countryIndex !== -1) {
+            const cities = this.countries[countryIndex].cities.includes(cityName);
+            if (cities !== -1) {
+                this.deleteCityFromCountry(country, cityName);
+                this.countries[countryIndex].cities.push(newCityName);
+                console.log(this.countries[countryIndex].cities)
+            } else {
+                return 'The City is not in that Country'
+            }
+        }
+    }
 }
 
 const allCountries = new Countries();
@@ -152,4 +166,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.findCountryByCity("Schaan"));
+console.log(allCountries.updateCityInCountry("Liberia", "Monrovia", "Hebron"));
