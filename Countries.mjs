@@ -101,15 +101,17 @@ const newCountryWithId = {
 countries.push(newCountryWithId);
 countries.pop();
 countries.unshift(newCountryWithId);
-countries.shift();
-countries.splice(newCountryWithId, 1);
+// countries.shift();
+// countries.splice(newCountryWithId, 1);
 
-const checkProvidedCountry = checkCountry("Israel");
+// const checkProvidedCountry = checkCountry("Israel");
 // const dividedCountries = divideToChunks(100, countries);
 // const concatCountries = concatChunks([
 //     2, 5
 // ], [3], [1]);
-// const indexOfState = countries.indexOf("Palestine");
+const indexOfState1 = countries.indexOf(newCountryWithId);
+const indexOfState2 = countries.map(country => country.countryName).indexOf("Palestine");
+
 // const isStateAvailable = countries.includes("Palestine");
 // const containsValue = searchByPartialName(countries, "pal");
 // const searchByFullName = searchByExactName(countries, "palestine");
