@@ -1,5 +1,6 @@
 import {countries} from "./CountriesArray.mjs";
 import {Country} from "./Country.mjs";
+import {generateUniqueId} from "./helpers.mjs"
 
 class Countries {
     constructor() {
@@ -7,13 +8,16 @@ class Countries {
     }
 
     addCountryAtEnd(country) {
-        this.countries.push(country)
+        this.countries.push(country);
     }
 
     addCountryAtTop(country) {
-        this.countries.unshift(country)
+        this.countries.unshift(country);
     }
-    getAllCountriesIds() {}
+
+    getCountries() {
+        return this.countries;
+    }
 }
 
 const allCountries = new Countries();
@@ -23,3 +27,16 @@ countries.forEach(country => {
     country = new Country(id, countryName, numberOfPopulation, cities)
     allCountries.addCountryAtTop(country);
 })
+
+const newCountry = {
+    "countryName": "Palestine",
+    "numberOfPopulation": 4030032477,
+    "cities": ["Alquds", "Ramallah", "Hebron", "Gaza"]
+}
+
+const newCountryWithId = {
+    id: + generateUniqueId(allCountries.getCountries()),
+    ... newCountry
+};
+
+allCountries.addCountryAtTop(newCountryWithId);
