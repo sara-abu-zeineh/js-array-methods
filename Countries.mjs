@@ -56,7 +56,7 @@ const searchByExactName = (arrayToSearch, value) => {
 }
 
 const checkCountry = (toCheckCountry) => {
-    const isStateAvailable = countries.some(country => country.toLocaleLowerCase() === toCheckCountry.toLocaleLowerCase());
+    const isStateAvailable = countries.some(country => country.countryName.toLocaleLowerCase() === toCheckCountry.toLocaleLowerCase());
 
     isStateAvailable ? console.log(`${toCheckCountry} is FOUND`) : console.log(`${toCheckCountry} is NOT FOUND`);
 }
@@ -102,11 +102,9 @@ countries.push(newCountryWithId);
 countries.pop();
 countries.unshift(newCountryWithId);
 countries.shift();
-
 countries.splice(newCountryWithId, 1);
-console.log(countries[0])
 
-// const checkProvidedCountry = checkCountry("palestine");
+const checkProvidedCountry = checkCountry("Israel");
 // const dividedCountries = divideToChunks(100, countries);
 // const concatCountries = concatChunks([
 //     2, 5
