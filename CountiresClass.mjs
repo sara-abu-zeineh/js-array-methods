@@ -67,6 +67,20 @@ class Countries {
         return concatenatedChunks;
     }
 
+    searchByExactName(value) {
+        const searchResult = this.countries.filter(item => item.countryName.toLowerCase() === value.toLowerCase());
+        // or
+        // const searchResultByFind = this.countryName.find(item => item.countryName.toLowerCase() === value.toLowerCase());
+        // or by using indexOf but its case sensitive
+
+        return searchResult ? searchResult : `${value} is not found`;
+    }
+
+    searchByPartialName(value) {
+        const searchResult = this.countries.filter(item => item.countryName.toLowerCase().includes(value.toLowerCase()));
+
+        return searchResult ? searchResult : `${value} is not found`;
+    }
 }
 
 const allCountries = new Countries();
@@ -89,4 +103,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.concatChunks());
+console.log(allCountries.searchByPartialName("Li"));
