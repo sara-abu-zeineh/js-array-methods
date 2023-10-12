@@ -17,10 +17,14 @@ const sortedArrayDescending = [...countries].sort(function (firstCountry, second
     }
     if (secondCountry > firstCountry) {
         return -1;
-    } else { 
+    } else {
         return 0;
     }
 });
+
+const sortedArrayUsingReverse = (arrayToReverse) => {
+    return [...arrayToReverse].reverse();
+}
 
 const divideToChunks = (chunksNumber, arrayToDivide) => {
     const newChunked = [];
@@ -30,10 +34,6 @@ const divideToChunks = (chunksNumber, arrayToDivide) => {
         newChunked.push(chunk);
     }
 
-    newChunked.forEach(list => {
-        console.log(list);
-        console.log()
-    })
     return newChunked;
 }
 
@@ -45,25 +45,25 @@ const searchByPartialName = (arrayToSearch, value) => {
 
 const searchByExactName = (arrayToSearch, value) => {
     const searchResult = arrayToSearch.filter(item => item.toLowerCase() === value.toLowerCase());
-    // or 
-	const searchResultByFind = arrayToSearch.find(item => value.toLowerCase() === item.toLowerCase());
-	// or by using indexOf but its case sensitive
-	// const searchUsingIndexOf = arrayToSearch.indexOf(value) > -1 ?
-	// 							console.log(`${value} is FOUND`) 
-	// 							: console.log(`${value} is NOT FOUND`)
+    // or
+    const searchResultByFind = arrayToSearch.find(item => value.toLowerCase() === item.toLowerCase());
+    // or by using indexOf but its case sensitive
+    // const searchUsingIndexOf = arrayToSearch.indexOf(value) > -1 ?
+    // console.log(`${value} is FOUND`)
+    // : console.log(`${value} is NOT FOUND`)
 
     return searchResult ? searchResult : `${value} is not found`;
 }
 
 const checkCountry = (toCheckCountry) => {
-	const isStateAvailable = countries.some(country => country.toLocaleLowerCase() === toCheckCountry.toLocaleLowerCase());
-	
-	isStateAvailable ? console.log(`${toCheckCountry} is FOUND`) : console.log(`${toCheckCountry} is NOT FOUND`);
+    const isStateAvailable = countries.some(country => country.toLocaleLowerCase() === toCheckCountry.toLocaleLowerCase());
+
+    isStateAvailable ? console.log(`${toCheckCountry} is FOUND`) : console.log(`${toCheckCountry} is NOT FOUND`);
 }
 
 const concatChunks = (...chunkArrays) => {
-	const concatenatedChunks = [].concat(...chunkArrays);
-	
+    const concatenatedChunks = [].concat(...chunkArrays);
+
     return concatenatedChunks;
 }
 
@@ -73,22 +73,46 @@ const deleteCountry = (value, arrayToUse) => {
     console.log(`${value} deleted successfully`)
 }
 
-const getLength = (arrayToUse) =>{
+const getLength = (arrayToUse) => {
     return arrayToUse.length;
 }
 
-countries.push("My Home");
+const generateUniqueId = () => {
+    const uniqueId = Math.floor((Math.random() * 99) + 1).toString() + new Date().getMilliseconds();
+    const isUsedBefore = countries.some(item => item.id === uniqueId);
+
+    if (isUsedBefore) {
+        return generateUniqueId();
+    } else {
+        return uniqueId;
+    }
+}
+
+const newCountry = {
+    "countryName": "Palestine",
+    "numberOfPopulation": 4030032477,
+    "cities": ["Alquds", "Ramallah", "Hebron", "Gaza"]
+}
+const newCountryWithId = {
+    id: + generateUniqueId(),
+    ... newCountry
+};
+
+countries.push(newCountryWithId);
 countries.pop();
-countries.unshift("My Home");
+countries.unshift(newCountryWithId);
 countries.shift();
-countries.splice("My Home", 1);
 
-const checkProvidedCountry = checkCountry("palestine");
-const dividedCountries = divideToChunks(100, countries);
-const concatCountries = concatChunks([2, 5], [3], [1]);
-const indexOfState = countries.indexOf("Palestine");
-const isStateAvailable = countries.includes("Palestine");
-const containsValue = searchByPartialName(countries, "pal");
-const searchByFullName = searchByExactName(countries, "palestine");
-const deleteByValue = deleteCountry("Israel", countries);
+countries.splice(newCountryWithId, 1);
+console.log(countries[0])
 
+// const checkProvidedCountry = checkCountry("palestine");
+// const dividedCountries = divideToChunks(100, countries);
+// const concatCountries = concatChunks([
+//     2, 5
+// ], [3], [1]);
+// const indexOfState = countries.indexOf("Palestine");
+// const isStateAvailable = countries.includes("Palestine");
+// const containsValue = searchByPartialName(countries, "pal");
+// const searchByFullName = searchByExactName(countries, "palestine");
+// const deleteByValue = deleteCountry("Israel", countries);
