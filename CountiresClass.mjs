@@ -6,6 +6,7 @@ class Countries {
     constructor() {
         this.countries = [];
     }
+
     // Push country to the end of the array
     addCountryAtEnd(country) {
         this.countries.push(country);
@@ -68,14 +69,14 @@ class Countries {
         return newChunked;
     }
 
-    // concat the countries to one chunks
+    // Concat the countries to one chunks
     concatChunks() {
         const concatenatedChunks = [].concat(...this.divideToChunks(3));
 
         return concatenatedChunks;
     }
 
-    // search for a country by its exact name
+    // Search for a country by its exact name
     searchByExactName(value) {
         const searchResult = this.countries.filter(item => item.countryName.toLowerCase() === value.toLowerCase());
         // or
@@ -85,14 +86,14 @@ class Countries {
         return searchResult ? searchResult : `${value} is not found`;
     }
 
-    // search for a country by its partial name
+    // Search for a country by its partial name
     searchByPartialName(value) {
         const searchResult = this.countries.filter(item => item.countryName.toLowerCase().includes(value.toLowerCase()));
 
         return searchResult ? searchResult : `${value} is not found`;
     }
 
-    // delete a country by its name
+    // Delete a country by its name
     deleteCountry(value) {
         const indexToDelete = this.countries.findIndex(item => item.countryName.toLowerCase() === value.toLowerCase());
 
@@ -105,7 +106,7 @@ class Countries {
         }
     }
 
-    // add city to a country
+    // Add city to a country
     addCityToCountry(country, city) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -118,7 +119,7 @@ class Countries {
         }
     }
 
-    // delete city from a country
+    // Delete city from a country
     deleteCityFromCountry(country, city) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -132,12 +133,12 @@ class Countries {
         }
     }
 
-    // return the index of a specific country
+    // Return the index of a specific country
     indexOfCountry(value) {
         return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
     }
 
-    // find country by passing the city name
+    // Find country by passing the city name
     findCountryByCity(city) {
         const countryIndex = this.countries.findIndex(country => {
             return country.cities.includes(city);
@@ -150,7 +151,7 @@ class Countries {
         }
     }
 
-    // update city to a new city name
+    // Update city to a new city name
     updateCityInCountry(country, cityName, newCityName) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -169,8 +170,7 @@ class Countries {
     }
 }
 
-
-//create a new instance of the Countries class
+// Create a new instance of the Countries class
 const allCountries = new Countries();
 
 countries.forEach(country => {
@@ -182,10 +182,20 @@ countries.forEach(country => {
 const newCountry = {
     "countryName": "Palestine",
     "numberOfPopulation": 4030032477,
-    "cities": ["Alquds", "Ramallah", "Hebron", "Gaza"]
+    "cities":  [
+        {"name": "Alquds", "x": 31.7683, "y": 35.2137},
+        {"name": "Ramallah", "x": 31.9038, "y": 35.2034},
+        {"name": "Hebron", "x": 31.5293, "y": 35.0935}
+    ]
 }
 
 const newCountryWithId = {
     id: + generateUniqueId(allCountries.getCountries()),
     ... newCountry
 };
+
+const {id, countryName, numberOfPopulation, cities} = newCountryWithId;
+const newOne = new Country(id, countryName, numberOfPopulation, cities);
+
+allCountries.addCountryAtTop(newOne);
+// console.log(allCountries.getCountries());
