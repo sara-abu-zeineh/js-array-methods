@@ -112,7 +112,9 @@ countries.unshift(newCountryWithId);
 const indexOfState1 = countries.indexOf(newCountryWithId);
 const indexOfState2 = countries.map(country => country.countryName).indexOf("Palestine");
 
-// const isStateAvailable = countries.includes("Palestine");
+const isStateAvailable1 = countries.includes(newCountryWithId);
+const isStateAvailable2 = countries.map(country => country.countryName).includes("Palestine");
+
 // const containsValue = searchByPartialName(countries, "pal");
 // const searchByFullName = searchByExactName(countries, "palestine");
 // const deleteByValue = deleteCountry("Israel", countries);
