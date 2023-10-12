@@ -48,9 +48,6 @@ const searchByExactName = (arrayToSearch, value) => {
     // or
     const searchResultByFind = arrayToSearch.find(item => item.countryName.toLowerCase() === value.toLowerCase());
     // or by using indexOf but its case sensitive
-    // const searchUsingIndexOf = arrayToSearch.indexOf(value) > -1 ?
-    // console.log(`${value} is FOUND`)
-    // : console.log(`${value} is NOT FOUND`)
 
     return searchResult ? searchResult : `${value} is not found`;
 }
