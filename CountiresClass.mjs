@@ -153,23 +153,20 @@ class Countries {
     }
 
     // Update city to a new city name
-    updateCityInCountry(country, cityName, newCityName) {
+    updateCityInCountry(country, cityName, newCity) {
         const countryIndex = this.indexOfCountry(country);
 
         if (countryIndex !== -1) {
-            const cities = this.countries[countryIndex].cities.includes(cityName);
+            this.countries[countryIndex].deleteCity(cityName);
+            this.countries[countryIndex].addCity(newCity);
 
-            if (cities !== -1) {
-                this.deleteCityFromCountry(country, cityName);
-                this.countries[countryIndex].cities.push(newCityName);
-
-                return `${cityName} updated successfully to ${newCityName}`;
-            } else {
-                return 'The City is not in that Country';
-            }
+            return `${cityName} updated successfully to ${newCity}`;
+        } else {
+            return 'The City is not in that Country';
         }
     }
 }
+
 
 // Create a new instance of the Countries class
 const allCountries = new Countries();
@@ -209,4 +206,9 @@ const {id, countryName, numberOfPopulation, cities} = newCountryWithId;
 const newOne = new Country(id, countryName, numberOfPopulation, cities);
 
 allCountries.addCountryAtTop(newOne);
-allCountries.findCountryByCity("Ramallah");
+const newCity = {
+    "name": "Jenin",
+    "x": 17.4549,
+    "y": -46.5790
+}
+allCountries.updateCityInCountry("Palestine", "Ramallah", newCity);

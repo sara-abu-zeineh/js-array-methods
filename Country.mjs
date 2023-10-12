@@ -18,6 +18,7 @@ export class Country {
     addCity(city) {
         const {name, x, y} = city;
         const newCity = new City(name, x, y);
+        console.log(city)
         this.cities.push(newCity);
     }
 
