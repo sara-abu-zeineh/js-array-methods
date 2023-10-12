@@ -493,7 +493,7 @@ export const countries = [
             }, {
                 "name": "Rio de Janeiro",
                 "x": -22.9068,
-                "y        " 26.9275
+                "y ": 26.9275
             }
         ]
     }, {
