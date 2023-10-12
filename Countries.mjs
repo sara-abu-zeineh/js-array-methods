@@ -65,9 +65,13 @@ const concatChunks = (...chunkArrays) => {
 }
 
 const deleteCountry = (value, arrayToUse) => {
-    const indexToDelete = arrayToUse.findIndex(item => item.toLowerCase() === value.toLowerCase());
-    arrayToUse.splice(indexToDelete, 1);
-    console.log(`${value} deleted successfully`)
+    const indexToDelete = arrayToUse.findIndex(item => item.countryName.toLowerCase() === value.toLowerCase());
+    if (indexToDelete != -1) {
+        arrayToUse.splice(indexToDelete, 1);
+        console.log(`${value} deleted successfully`);
+    } else {
+        console.log(`${value} is not found`);
+    }
 }
 
 const getLength = (arrayToUse) => {
@@ -114,5 +118,5 @@ const isStateAvailable2 = countries.map(country => country.countryName).includes
 
 // const containsValue = searchByPartialName(countries, "af");
 
-const searchByExactCountryName = searchByExactName(countries, "palestine");
-// const deleteByValue = deleteCountry("Israel", countries);
+// const searchByExactCountryName = searchByExactName(countries, "palestine");
+const deleteByValue = deleteCountry("Israiergjrngjfel", countries);
