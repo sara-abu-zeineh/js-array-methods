@@ -91,6 +91,18 @@ class Countries {
             return `${value} is not found`;
         }
     }
+
+    addCityToCountry(country, city) {
+        const countryIndex = this.indexOfCountry(country);
+        if (countryIndex !== -1) {
+            this.countries[countryIndex].cities.push(city);
+            console.log(this.countries[countryIndex].cities)
+        }
+    }
+
+    indexOfCountry(value){
+        return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
+    }
 }
 
 const allCountries = new Countries();
@@ -113,4 +125,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.deleteCountry("Liechtenstein"));
+console.log(allCountries.addCityToCountry("Liechtenstein", "Schaan"));
