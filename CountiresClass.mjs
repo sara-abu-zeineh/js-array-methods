@@ -6,19 +6,22 @@ class Countries {
     constructor() {
         this.countries = [];
     }
-
+    // Push country to the end of the array
     addCountryAtEnd(country) {
         this.countries.push(country);
     }
 
+    // Push country to the top of the array
     addCountryAtTop(country) {
         this.countries.unshift(country);
     }
 
+    // Get all Countries
     getCountries() {
         return this.countries;
     }
 
+    // Get sorted Array in Ascending order
     getSortedArrayAscending() {
         const sortedArray = [...this.countries].sort(function (firstCountry, secondCountry) {
             if (firstCountry.countryName > secondCountry.countryName) {
@@ -33,6 +36,7 @@ class Countries {
         return sortedArray;
     }
 
+    // Get sorted Array in Descending order
     sortedArrayDescending() {
         const sortedArray = [...this.countries].sort(function (firstCountry, secondCountry) {
             if (firstCountry.countryName > secondCountry.countryName) {
@@ -47,10 +51,12 @@ class Countries {
         return sortedArray;
     }
 
+    // Get sorted Array in Ascending order
     sortedArrayUsingReverse() {
         return [...this.getSortedArrayAscending()].reverse();
     }
 
+    // Divide the countries to chunks
     divideToChunks(chunksNumber) {
         const newChunked = [];
 
@@ -62,12 +68,14 @@ class Countries {
         return newChunked;
     }
 
+    // concat the countries to one chunks
     concatChunks() {
         const concatenatedChunks = [].concat(...this.divideToChunks(3));
 
         return concatenatedChunks;
     }
 
+    // search for a country by its exact name
     searchByExactName(value) {
         const searchResult = this.countries.filter(item => item.countryName.toLowerCase() === value.toLowerCase());
         // or
@@ -77,15 +85,17 @@ class Countries {
         return searchResult ? searchResult : `${value} is not found`;
     }
 
+    // search for a country by its partial name
     searchByPartialName(value) {
         const searchResult = this.countries.filter(item => item.countryName.toLowerCase().includes(value.toLowerCase()));
 
         return searchResult ? searchResult : `${value} is not found`;
     }
 
+    // delete a country by its name
     deleteCountry(value) {
         const indexToDelete = this.countries.findIndex(item => item.countryName.toLowerCase() === value.toLowerCase());
-        
+
         if (indexToDelete != -1) {
             this.countries.splice(indexToDelete, 1);
 
@@ -95,6 +105,7 @@ class Countries {
         }
     }
 
+    // add city to a country
     addCityToCountry(country, city) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -107,6 +118,7 @@ class Countries {
         }
     }
 
+    // delete city from a country
     deleteCityFromCountry(country, city) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -120,10 +132,12 @@ class Countries {
         }
     }
 
+    // return the index of a specific country
     indexOfCountry(value) {
         return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
     }
 
+    // find country by passing the city name
     findCountryByCity(city) {
         const countryIndex = this.countries.findIndex(country => {
             return country.cities.includes(city);
@@ -136,6 +150,7 @@ class Countries {
         }
     }
 
+    // update city to a new city name
     updateCityInCountry(country, cityName, newCityName) {
         const countryIndex = this.indexOfCountry(country);
 
@@ -154,6 +169,8 @@ class Countries {
     }
 }
 
+
+//create a new instance of the Countries class
 const allCountries = new Countries();
 
 countries.forEach(country => {
@@ -172,6 +189,3 @@ const newCountryWithId = {
     id: + generateUniqueId(allCountries.getCountries()),
     ... newCountry
 };
-
-
-console.log(allCountries.updateCityInCountry("Liberia", "Monrovia", "Hebron"));

@@ -3,6 +3,6 @@ export class Country {
         this.id = id;
         this.countryName = countryName;
         this.numberOfPopulation = numberOfPopulation;
-        this.cities = [cities];
+        this.cities = cities;
     }
 }
