@@ -112,7 +112,6 @@ class Countries {
 
         if (countryIndex !== -1) {
             this.countries[countryIndex].addCity(city);
-            console.log(this.countries[countryIndex].cities)
 
             return `${city.name} added to ${country} successfully`;
         } else {
@@ -125,8 +124,7 @@ class Countries {
         const countryIndex = this.indexOfCountry(country);
 
         if (countryIndex !== -1) {
-            const cityIndex = this.countries[countryIndex].cities.includes(city);
-            this.countries[countryIndex].cities.splice(cityIndex, 1);
+            const deleteCity = this.countries[countryIndex].deleteCity(city);
 
             return `${city} deleted to ${country} successfully`;
         } else {
@@ -209,8 +207,4 @@ const {id, countryName, numberOfPopulation, cities} = newCountryWithId;
 const newOne = new Country(id, countryName, numberOfPopulation, cities);
 
 allCountries.addCountryAtTop(newOne);
-allCountries.addCityToCountry("palestine", {
-    "name": "Bethlehem",
-    "x": 31.7683,
-    "y": 35.2137
-})
+allCountries.deleteCityFromCountry("palestine", "Ramallah");
