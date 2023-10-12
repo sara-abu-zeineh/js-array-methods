@@ -111,9 +111,10 @@ class Countries {
         const countryIndex = this.indexOfCountry(country);
 
         if (countryIndex !== -1) {
-            this.countries[countryIndex].cities.push(city);
+            this.countries[countryIndex].addCity(city);
+            console.log(this.countries[countryIndex].cities)
 
-            return `${city} added to ${country} successfully`;
+            return `${city.name} added to ${country} successfully`;
         } else {
             return `Please Enter the Country Name Correctly`;
         }
@@ -182,10 +183,20 @@ countries.forEach(country => {
 const newCountry = {
     "countryName": "Palestine",
     "numberOfPopulation": 4030032477,
-    "cities":  [
-        {"name": "Alquds", "x": 31.7683, "y": 35.2137},
-        {"name": "Ramallah", "x": 31.9038, "y": 35.2034},
-        {"name": "Hebron", "x": 31.5293, "y": 35.0935}
+    "cities": [
+        {
+            "name": "Alquds",
+            "x": 31.7683,
+            "y": 35.2137
+        }, {
+            "name": "Ramallah",
+            "x": 31.9038,
+            "y": 35.2034
+        }, {
+            "name": "Hebron",
+            "x": 31.5293,
+            "y": 35.0935
+        }
     ]
 }
 
@@ -198,4 +209,8 @@ const {id, countryName, numberOfPopulation, cities} = newCountryWithId;
 const newOne = new Country(id, countryName, numberOfPopulation, cities);
 
 allCountries.addCountryAtTop(newOne);
-// console.log(allCountries.getCountries());
+allCountries.addCityToCountry("palestine", {
+    "name": "Bethlehem",
+    "x": 31.7683,
+    "y": 35.2137
+})

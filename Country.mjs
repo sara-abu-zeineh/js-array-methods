@@ -13,6 +13,11 @@ export class Country {
             const {name, x, y} = city;
             return new City(name, x, y);
         });
-        
+    }
+
+    addCity(city) {
+        const {name, x, y} = city;
+        const newCity = new City(name, x, y);
+        this.cities.push(newCity);
     }
 }
