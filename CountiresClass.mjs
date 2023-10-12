@@ -18,6 +18,39 @@ class Countries {
     getCountries() {
         return this.countries;
     }
+
+    getSortedArrayAscending() {
+        const sortedArray = [...this.countries].sort(function (firstCountry, secondCountry) {
+            if (firstCountry.countryName > secondCountry.countryName) {
+                return 1;
+            }
+            if (secondCountry.countryName > firstCountry.countryName) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        return sortedArray
+    }
+
+    sortedArrayDescending() {
+        const sortedArray = [...this.countries].sort(function (firstCountry, secondCountry) {
+            if (firstCountry.countryName > secondCountry.countryName) {
+                return -1;
+            }
+            if (secondCountry.countryName > firstCountry.countryName) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        return sortedArray
+    }
+
+    sortedArrayUsingReverse() {
+        return [...this.getSortedArrayAscending()].reverse();
+    }
+
 }
 
 const allCountries = new Countries();
@@ -39,4 +72,5 @@ const newCountryWithId = {
     ... newCountry
 };
 
-allCountries.addCountryAtTop(newCountryWithId);
+
+allCountries.addCountryAtTop(allCountries.sortedArrayUsingReverse());
