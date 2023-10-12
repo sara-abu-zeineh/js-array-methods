@@ -81,6 +81,16 @@ class Countries {
 
         return searchResult ? searchResult : `${value} is not found`;
     }
+
+    deleteCountry(value) {
+        const indexToDelete = this.countries.findIndex(item => item.countryName.toLowerCase() === value.toLowerCase());
+        if (indexToDelete != -1) {
+            this.countries.splice(indexToDelete, 1);
+            return `${value} deleted successfully`;
+        } else {
+            return `${value} is not found`;
+        }
+    }
 }
 
 const allCountries = new Countries();
@@ -103,4 +113,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.searchByPartialName("Li"));
+console.log(allCountries.deleteCountry("Liechtenstein"));
