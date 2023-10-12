@@ -96,11 +96,14 @@ class Countries {
         const countryIndex = this.indexOfCountry(country);
         if (countryIndex !== -1) {
             this.countries[countryIndex].cities.push(city);
-            console.log(this.countries[countryIndex].cities)
+            console.log(this.countries[countryIndex].cities);
+            return `${city} added to ${country} successfully`
+        } else {
+            return `Please Enter the Country Name Correctly`
         }
     }
-
-    indexOfCountry(value){
+    
+    indexOfCountry(value) {
         return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
     }
 }
