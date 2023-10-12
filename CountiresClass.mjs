@@ -30,7 +30,7 @@ class Countries {
                 return 0;
             }
         });
-        return sortedArray
+        return sortedArray;
     }
 
     sortedArrayDescending() {
@@ -44,7 +44,7 @@ class Countries {
                 return 0;
             }
         });
-        return sortedArray
+        return sortedArray;
     }
 
     sortedArrayUsingReverse() {
@@ -56,6 +56,7 @@ class Countries {
 
         for (let i = 0; i < this.countries.length; i += chunksNumber) {
             const chunk = this.countries.slice(i, i + chunksNumber);
+
             newChunked.push(chunk);
         }
         return newChunked;
@@ -84,8 +85,10 @@ class Countries {
 
     deleteCountry(value) {
         const indexToDelete = this.countries.findIndex(item => item.countryName.toLowerCase() === value.toLowerCase());
+        
         if (indexToDelete != -1) {
             this.countries.splice(indexToDelete, 1);
+
             return `${value} deleted successfully`;
         } else {
             return `${value} is not found`;
@@ -94,12 +97,13 @@ class Countries {
 
     addCityToCountry(country, city) {
         const countryIndex = this.indexOfCountry(country);
+
         if (countryIndex !== -1) {
             this.countries[countryIndex].cities.push(city);
-            console.log(this.countries[countryIndex].cities);
-            return `${city} added to ${country} successfully`
+
+            return `${city} added to ${country} successfully`;
         } else {
-            return `Please Enter the Country Name Correctly`
+            return `Please Enter the Country Name Correctly`;
         }
     }
 
@@ -109,9 +113,10 @@ class Countries {
         if (countryIndex !== -1) {
             const cityIndex = this.countries[countryIndex].cities.includes(city);
             this.countries[countryIndex].cities.splice(cityIndex, 1);
-            return `${city} deleted to ${country} successfully`
+
+            return `${city} deleted to ${country} successfully`;
         } else {
-            return `Please Enter the Country Name Correctly`
+            return `Please Enter the Country Name Correctly`;
         }
     }
 
@@ -127,20 +132,23 @@ class Countries {
         if (countryIndex !== -1) {
             return this.countries[countryIndex].countryName;
         } else {
-            return `Please Enter the city Name Correctly`
+            return `Please Enter the city Name Correctly`;
         }
     }
 
     updateCityInCountry(country, cityName, newCityName) {
         const countryIndex = this.indexOfCountry(country);
+
         if (countryIndex !== -1) {
             const cities = this.countries[countryIndex].cities.includes(cityName);
+
             if (cities !== -1) {
                 this.deleteCityFromCountry(country, cityName);
                 this.countries[countryIndex].cities.push(newCityName);
-                console.log(this.countries[countryIndex].cities)
+
+                return `${cityName} updated successfully to ${newCityName}`;
             } else {
-                return 'The City is not in that Country'
+                return 'The City is not in that Country';
             }
         }
     }
