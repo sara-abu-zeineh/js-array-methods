@@ -51,6 +51,18 @@ class Countries {
         return [...this.getSortedArrayAscending()].reverse();
     }
 
+    divideToChunks(chunksNumber) {
+        const newChunked = [];
+
+        for (let i = 0; i < this.countries.length; i += chunksNumber) {
+            const chunk = this.countries.slice(i, i + chunksNumber);
+            newChunked.push(chunk);
+        }
+        console.log(newChunked)
+        return newChunked;
+    }
+    
+
 }
 
 const allCountries = new Countries();
@@ -73,4 +85,4 @@ const newCountryWithId = {
 };
 
 
-allCountries.addCountryAtTop(allCountries.sortedArrayUsingReverse());
+console.log(allCountries.divideToChunks(2))
