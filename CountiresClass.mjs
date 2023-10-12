@@ -113,7 +113,9 @@ class Countries {
         if (countryIndex !== -1) {
             this.countries[countryIndex].addCity(city);
 
-            return `${city.name} added to ${country} successfully`;
+            return `${
+                city.name
+            } added to ${country} successfully`;
         } else {
             return `Please Enter the Country Name Correctly`;
         }
@@ -139,12 +141,12 @@ class Countries {
 
     // Find country by passing the city name
     findCountryByCity(city) {
-        const countryIndex = this.countries.findIndex(country => {
-            return country.cities.includes(city);
-        });
+        const country = this.countries.filter(country => {
+            return country.findCity(city);
+        })[0];
 
-        if (countryIndex !== -1) {
-            return this.countries[countryIndex].countryName;
+        if (country) {
+            return country.countryName;
         } else {
             return `Please Enter the city Name Correctly`;
         }
@@ -207,4 +209,4 @@ const {id, countryName, numberOfPopulation, cities} = newCountryWithId;
 const newOne = new Country(id, countryName, numberOfPopulation, cities);
 
 allCountries.addCountryAtTop(newOne);
-allCountries.deleteCityFromCountry("palestine", "Ramallah");
+allCountries.findCountryByCity("Ramallah");

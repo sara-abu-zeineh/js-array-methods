@@ -26,4 +26,11 @@ export class Country {
         this.cities.splice(cityIndex, 1)
     }
 
+    findCity(cityToSearch) {
+        const cityIndex = this.cities.findIndex(city => city.name.toLowerCase() === cityToSearch.toLowerCase());
+        if(cityIndex !== -1) {
+            return this.countryName;
+        }
+    }
+
 }
