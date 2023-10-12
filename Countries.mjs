@@ -38,15 +38,15 @@ const divideToChunks = (chunksNumber, arrayToDivide) => {
 }
 
 const searchByPartialName = (arrayToSearch, value) => {
-    const searchResult = arrayToSearch.filter(item => item.toLowerCase().includes(value));
+    const searchResult = arrayToSearch.filter(item => item.countryName.toLowerCase().includes(value));
 
     return searchResult ? searchResult : `${value} is not found`;
 }
 
 const searchByExactName = (arrayToSearch, value) => {
-    const searchResult = arrayToSearch.filter(item => item.toLowerCase() === value.toLowerCase());
+    const searchResult = arrayToSearch.filter(item => item.countryName.toLowerCase() === value.toLowerCase());
     // or
-    const searchResultByFind = arrayToSearch.find(item => value.toLowerCase() === item.toLowerCase());
+    const searchResultByFind = arrayToSearch.find(item => item.countryName.toLowerCase() === value.toLowerCase());
     // or by using indexOf but its case sensitive
     // const searchUsingIndexOf = arrayToSearch.indexOf(value) > -1 ?
     // console.log(`${value} is FOUND`)
@@ -115,6 +115,7 @@ const indexOfState2 = countries.map(country => country.countryName).indexOf("Pal
 const isStateAvailable1 = countries.includes(newCountryWithId);
 const isStateAvailable2 = countries.map(country => country.countryName).includes("Palestine");
 
-// const containsValue = searchByPartialName(countries, "pal");
-// const searchByFullName = searchByExactName(countries, "palestine");
+// const containsValue = searchByPartialName(countries, "af");
+
+const searchByExactCountryName = searchByExactName(countries, "palestine");
 // const deleteByValue = deleteCountry("Israel", countries);
