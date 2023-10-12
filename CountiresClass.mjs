@@ -58,10 +58,14 @@ class Countries {
             const chunk = this.countries.slice(i, i + chunksNumber);
             newChunked.push(chunk);
         }
-        console.log(newChunked)
         return newChunked;
     }
-    
+
+    concatChunks() {
+        const concatenatedChunks = [].concat(...this.divideToChunks(3));
+
+        return concatenatedChunks;
+    }
 
 }
 
@@ -85,4 +89,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.divideToChunks(2))
+console.log(allCountries.concatChunks());
