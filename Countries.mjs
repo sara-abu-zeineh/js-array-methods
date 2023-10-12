@@ -1,10 +1,10 @@
 import {countries} from "./CountriesArray.mjs";
 
 const sortedArraysAscending = [...countries].sort(function (firstCountry, secondCountry) {
-    if (firstCountry > secondCountry) {
+    if (firstCountry.countryName > secondCountry.countryName) {
         return -1;
     }
-    if (secondCountry > firstCountry) {
+    if (secondCountry.countryName > firstCountry.countryName) {
         return 1;
     } else {
         return 0;
@@ -12,10 +12,10 @@ const sortedArraysAscending = [...countries].sort(function (firstCountry, second
 });
 
 const sortedArrayDescending = [...countries].sort(function (firstCountry, secondCountry) {
-    if (firstCountry > secondCountry) {
+    if (firstCountry.countryName > secondCountry.countryName) {
         return 1;
     }
-    if (secondCountry > firstCountry) {
+    if (secondCountry.countryName > firstCountry.countryName) {
         return -1;
     } else {
         return 0;
@@ -119,4 +119,4 @@ const isStateAvailable2 = countries.map(country => country.countryName).includes
 // const containsValue = searchByPartialName(countries, "af");
 
 // const searchByExactCountryName = searchByExactName(countries, "palestine");
-const deleteByValue = deleteCountry("Israiergjrngjfel", countries);
+// const deleteByValue = deleteCountry("Israel", countries);
