@@ -118,6 +118,18 @@ class Countries {
     indexOfCountry(value) {
         return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
     }
+
+    findCountryByCity(city) {
+        const countryIndex = this.countries.findIndex(country => {
+            return country.cities.includes(city);
+        });
+
+        if (countryIndex !== -1) {
+            return this.countries[countryIndex].countryName;
+        } else {
+            return `Please Enter the city Name Correctly`
+        }
+    }
 }
 
 const allCountries = new Countries();
@@ -140,4 +152,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.deleteCityFromCountry("Liechtenstein", "Schaan"));
+console.log(allCountries.findCountryByCity("Schaan"));
