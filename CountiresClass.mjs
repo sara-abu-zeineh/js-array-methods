@@ -102,7 +102,19 @@ class Countries {
             return `Please Enter the Country Name Correctly`
         }
     }
-    
+
+    deleteCityFromCountry(country, city) {
+        const countryIndex = this.indexOfCountry(country);
+
+        if (countryIndex !== -1) {
+            const cityIndex = this.countries[countryIndex].cities.includes(city);
+            this.countries[countryIndex].cities.splice(cityIndex, 1);
+            return `${city} deleted to ${country} successfully`
+        } else {
+            return `Please Enter the Country Name Correctly`
+        }
+    }
+
     indexOfCountry(value) {
         return this.countries.map(country => country.countryName.toLowerCase()).indexOf(value.toLowerCase());
     }
@@ -128,4 +140,4 @@ const newCountryWithId = {
 };
 
 
-console.log(allCountries.addCityToCountry("Liechtenstein", "Schaan"));
+console.log(allCountries.deleteCityFromCountry("Liechtenstein", "Schaan"));
