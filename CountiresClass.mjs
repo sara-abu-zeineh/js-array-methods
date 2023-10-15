@@ -1,6 +1,6 @@
 import {countries} from "./CountriesArray.mjs";
 import {Country} from "./Country.mjs";
-import {generateUniqueId} from "./helpers.mjs"
+import {generateUniqueId} from "./Helpers.mjs"
 
 class Countries {
     constructor() {
