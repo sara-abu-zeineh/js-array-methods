@@ -29,7 +29,7 @@ export class Country {
 
     findCity(cityToSearch) {
         const cityIndex = this.cities.findIndex(city => city.name.toLowerCase() === cityToSearch.toLowerCase());
-        if(cityIndex !== -1) {
+        if (cityIndex !== -1) {
             return this.countryName;
         }
     }
